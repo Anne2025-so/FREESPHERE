@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact and help</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <header>
+        
+
+        <div class="container">
+
+
+        <div class="logo">
+<img src="OIP.webp" alt="freesphere" >
+        <span class="highlight">FreeSphere</span>
+        
+        </div>
+
+<nav class="nav-lien" id="men">
+              <ul>
+                <li><a id="homel" href="index.html">Home</a></li>
+                <li><a id="contactl" href="contact.html">Contact</a></li>
+                </ul>
+
+</nav>
+       
+    
+
+
+
+<button onclick="changeMode()" id="mode" class="mode-btn">dark⏾⋆</button>
+
+<div class="linglang" id="linglang">
+<button id="lis">languague🌐</button>
+<div class="lang">
+
+        <div  onclick="changeLang('en')">English</div>
+        <div  onclick="changeLang('fr')">Français</div>
+        <div  onclick="changeLang('es')">Español</div>
+</div>
+    </div>
+
+
+<div class="search-con">
+    <input type="text" 
+    id="searchInput"
+    
+    placeholder="Search...">
+    <button onclick="searchYourCategory()">submit</button>
+</div>
+
+<button id="bot" class="bot">⫶☰</button>
+
+
+
+</div>
+
+
+    </header>
+
+
+    <section class="contact" id="contact-sec" >
+        <h1 id="contact">Contact Us</h1>
+        <p id="p">If you have any questions, suggestions, or feedback, feel free to reach out to us using the form below.</p>
+
+        <email id="e">contact@freesphere.gmail.com</email>
+        <br>
+        <phone id="h">+1 (980) 456-9890</phone>
+        <form action="#" method="post">
+            <label id="nameL" for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label id="emailL" for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label id="messageL" for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+
+    <section class="help" id="help">
+        <h1 id="hel">Help</h1>
+        <p id="i">If you need assistance or have any questions, please check our FAQ section or contact our support team.</p>
+        <a href="#" id="v">Visit FAQ</a>
+        <a href="#" id="c">Contact Support</a>
+    </section>
+
+    <br>
+
+    <a href="index.html" id="back">Back to Home</a>
+
+    <script>
+
+
+
+const btnbot = document.getElementById("bot");
+const menunav = document.getElementById("men");
+const navliens = document.querySelectorAll(".nav-lien a");
+
+
+
+btnbot.onclick= function(e){
+    e.stopPropagation();
+menunav.classList.toggle("active");
+
+
+};
+
+navliens.forEach(function(liens){
+    liens.onclick = function(){
+        menunav.classList.remove("active")
+
+    };
+});
+
+
+
+document.onclick=function(e) {
+ if( 
+ !menunav.contains(e.target)&&
+ !btnbot.contains(e.target)
+ ) {
+     menunav.classList.remove("active");
+ }
+
+};
+
+
+const lis = document.getElementById("lis")
+const menu = document.getElementById("linglang")
+ lis.addEventListener("click",function(e){
+    e.stopPropagation();
+menu.classList.toggle("show");
+
+
+ });
+
+
+ function changeLang(lang){
+    menu.classList.remove("show");
+
+
+   if(lang === "en"){
+    lis.textContent="Language🌐";
+    homel.textContent="home";
+    contactl.textContent="Contact";
+    contact.textContent="Contact us";
+    p.textContent="If you have any questions, suggestions, or feedback, feel free to reach out to us using the form below";
+        
+    i.textContent="If you need assistance or have any questions, please check our FAQ section or contact our support team ";
+    hel.textContent="Help";
+    v.textContent="Visit FAQ";
+    c.textContent="Contact Support";
+    nameL.textContent="Name";
+    emailL.textContent="Email";
+    messageL.textContent="Message";
+    back.textContent="Back Home"
+
+   }
+
+
+
+if(lang === "fr"){
+lis.textContent="Langue🌐";
+homel.textContent="Accueil";
+contactl.textContent="Contact";
+contact.textContent="Contactez-nous";
+p.textContent="Si vous avez des questions, suggestions ou commentaires, n'hésitez pas à nous contacter via le formulaire ci-dessous";
+i.textContent="Si vous avez besoin d'aide ou si vous avez des questions, veuillez consulter notre section FAQ ou contacter notre équipe de support";
+hel.textContent="Aide";
+v.textContent="Voir FAQ";
+c.textContent="Contacter le support";
+nameL.textContent="Nom";
+emailL.textContent="Email";
+messageL.textContent="Message";
+back.textContent="Retour"
+
+}
+
+
+if(lang === "es"){
+lis.textContent="Idioma🌐";
+homel.textContent="inicio";
+contactl.textContent="Contacto";
+contact.textContent="Contáctanos";
+p.textContent="Si tienes alguna pregunta, sugerencia o comentario, no dudes en contactarnos usando el formulario a continuación";
+i.textContent="Si necesitas ayuda o tienes alguna pregunta, por favor revisa nuestra sección de preguntas frecuentes o contacta a nuestro equipo de soporte";
+hel.textContent="Ayuda";
+v.textContent="Visitar FAQ";
+c.textContent="Contactar Soporte";
+nameL.textContent="Nombre";
+emailL.textContent="Correo electrónico";
+messageL.textContent="Mensaje";
+back.textContent="volver al inicio"
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function searchYourCategory(){
+    let input= document.getElementById("searchInput").value.toLowerCase().trim();
+     
+    if(input === ""){
+        alert("please search something");
+        return;
+    }
+
+    if(
+        input.includes("home")||
+         input.includes("accueil")||
+          input.includes("inicio")
+    ){
+    window.location.href ="index.html";
+}
+ 
+
+ else if(
+        input.includes("contact")||
+         input.includes("contacto")||
+         input.includes("contactez")
+          
+    ){
+    window.location.href ="#contact-sec";
+}
+ 
+else if(
+input.includes("help")||
+         input.includes("aide")||
+         input.includes("ayuda")
+          
+    ){
+    window.location.href ="#help";
+}
+
+
+   else{
+    alert("page not found ")
+   } 
+
+
+
+
+
+}
+
+
+
+
+
+function changeMode(){
+
+    document.body.classList.toggle("mode");
+
+    let btn = document.getElementById("mode");
+
+    if(document.body.classList.contains("mode")){
+        btn.innerHTML = "☀️ Light Mode";
+    }else{
+        btn.innerHTML = "🌙 Dark Mode";
+    }
+
+}
+
+
+
+    </script>
+
+
+    
+    <footer>
+        <p>&copy; 2026 FreeSphere. All rights reserved.</p>
+    </footer>
+</body>
+</html>
